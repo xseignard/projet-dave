@@ -14,7 +14,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import { EventBus } from '../EventBus'
 
 export default {
   name: 'Step',
@@ -30,7 +29,7 @@ export default {
   methods: {
     handleClick(action) {
       this.$router.push(`./${action.target}`)
-      action.triggers.map(t => EventBus.$emit('trigger', t))
+      action.triggers.map(t => this.$root.$emit('trigger', t))
     },
   },
 }

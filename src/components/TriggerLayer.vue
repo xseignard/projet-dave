@@ -1,15 +1,22 @@
 <template>
-  <div class="trigger-layer"></div>
+  <div class="trigger-layer">
+    <h2>Triggers</h2>
+    <p v-for="(t, i) in triggers" :key="i">{{ t }}</p>
+  </div>
 </template>
 
 <script>
-import { EventBus } from '../EventBus'
-
 export default {
   name: 'TriggerHandler',
+  data() {
+    return {
+      triggers: [],
+    }
+  },
   mounted() {
-    EventBus.$on('trigger', payload => {
-      console.log(payload)
+    console.log(this)
+    this.$root.$on('trigger', payload => {
+      this.triggers.push(payload)
     })
   },
 }
@@ -17,6 +24,11 @@ export default {
 
 <style lang="scss" scoped>
 .trigger-layer {
-  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 15vw;
+  height: 50vh;
+  overflow-x: hidden;
 }
 </style>
