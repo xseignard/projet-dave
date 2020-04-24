@@ -28,8 +28,8 @@ export default {
   },
   methods: {
     handleClick(action) {
-      this.$router.push(`./${action.target}`)
       action.triggers.map(t => this.$root.$emit('trigger', t))
+      this.$router.push(`./${action.target}`)
     },
   },
 }

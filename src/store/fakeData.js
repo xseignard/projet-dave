@@ -1,4 +1,4 @@
-const faker = require('faker')
+import faker from 'faker'
 
 const MAX_STEPS = 20
 const MAX_TRIGGERS = 10
@@ -20,8 +20,7 @@ const randomInt = (min, max, exclude) => {
 }
 
 const step = id => {
-  const actionCount = randomInt(4, 8)
-  const actions = Array(actionCount)
+  const actions = Array(randomInt(4, 8))
     .fill(0)
     .map(() => {
       return {
